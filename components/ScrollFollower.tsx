@@ -15,16 +15,20 @@ export default function ScrollFollower() {
         // Find the narrative paragraph closest to viewport center
         const blocks = Array.from(document.querySelectorAll('[data-follow]')) as HTMLElement[]
         const center = window.innerHeight / 2
-        let closest: { el: HTMLElement; dist: number } | null = null
-        blocks.forEach((el) => {
+        let closestEl: HTMLElement | null = null
+        let minDist = Number.POSITIVE_INFINITY
+        for (const el of blocks) {
           const r = el.getBoundingClientRect()
           const mid = r.top + r.height / 2
           const dist = Math.abs(mid - center)
-          if (!closest || dist < closest.dist) closest = { el, dist }
-        })
+          if (dist < minDist) {
+            minDist = dist
+            closestEl = el
+          }
+        }
 
         const baseOffset = 120
-        const target = closest?.el ?? null
+        const target = closestEl
         if (target && ref.current) {
           const r = target.getBoundingClientRect()
           const mid = r.top + r.height / 2
