@@ -1,26 +1,445 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
+/* Redesigned color system for black text on white background with finance/tech aesthetic */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Pure white background with true black text */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.1 0 0);
+
+  /* Card and surface colors */
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.1 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.1 0 0);
+
+  /* Primary accent - deep charcoal for emphasis */
+  --primary: oklch(0.15 0 0);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary - light gray for subtle elements */
+  --secondary: oklch(0.96 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
+
+  /* Muted - for less important text and backgrounds */
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+
+  /* Accent - slightly darker gray for hover states */
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.1 0 0);
+
+  /* Destructive - subtle red for errors */
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* Borders and inputs - very light gray */
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.94 0 0);
+  --ring: oklch(0.3 0 0);
+
+  /* Chart colors - monochromatic grays */
+  --chart-1: oklch(0.2 0 0);
+  --chart-2: oklch(0.35 0 0);
+  --chart-3: oklch(0.5 0 0);
+  --chart-4: oklch(0.65 0 0);
+  --chart-5: oklch(0.8 0 0);
+
+  /* Minimal border radius for sharp, professional look */
+  --radius: 0.375rem;
+
+  /* Sidebar colors */
+  --sidebar: oklch(0.99 0 0);
+  --sidebar-foreground: oklch(0.1 0 0);
+  --sidebar-primary: oklch(0.15 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.96 0 0);
+  --sidebar-accent-foreground: oklch(0.15 0 0);
+  --sidebar-border: oklch(0.92 0 0);
+  --sidebar-ring: oklch(0.3 0 0);
+
+  /* Subtle shadows for depth */
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.08;
+  --shadow-color: #000000;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.371 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.439 0 0);
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 2px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.05;
+  --shadow-color: #000000;
 }
 
 @theme inline {
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "Courier New", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-serif: "Source Serif 4", "Source Serif 4 Fallback";
+  /* computed shadow variables below - do not modify */
+  --shadow-2xs: var(--shadow-x) var(--shadow-y)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-xs: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-sm: var(--shadow-x) var(--shadow-y) calc(var(--shadow-blur) * 1.5) var(--shadow-spread)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-md: calc(var(--shadow-x) * 2) calc(var(--shadow-y) * 2) calc(var(--shadow-blur) * 3)
+    calc(var(--shadow-spread) - 1px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-lg: calc(var(--shadow-x) * 4) calc(var(--shadow-y) * 4) calc(var(--shadow-blur) * 5)
+    calc(var(--shadow-spread) - 3px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-xl: calc(var(--shadow-x) * 6) calc(var(--shadow-y) * 6) calc(var(--shadow-blur) * 7)
+    calc(var(--shadow-spread) - 5px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-2xl: calc(var(--shadow-x) * 8) calc(var(--shadow-y) * 8) calc(max(0px, var(--shadow-blur) * 9 - 8px))
+    calc(var(--shadow-spread) - 12px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 250%), transparent);
+  --shadow: var(--shadow-md);
+  --color-shadow-color: var(--shadow-color);
+  --shadow-opacity: var(--shadow-opacity);
+  --shadow-spread: var(--shadow-spread);
+  --shadow-blur: var(--shadow-blur);
+  --shadow-y: var(--shadow-y);
+  --shadow-x: var(--shadow-x);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Motion tokens and hero linework animation */
+:root {
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-lg: 1200ms;
+}
+
+.hero-stroke {
+  stroke: rgba(0, 0, 0, 0.12);
+  stroke-width: 1;
+  stroke-linecap: round;
+  animation: dash var(--duration-lg) var(--ease-spring) infinite alternate;
+}
+
+.hero-stroke.delay { animation-delay: .2s; }
+.hero-stroke.delay-2 { animation-delay: .4s; }
+
+@keyframes dash {
+  from { stroke-dasharray: 10 600; stroke-dashoffset: 0; }
+  to { stroke-dasharray: 120 600; stroke-dashoffset: -40; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-stroke { animation: none; }
+}
+
+/* Soften grid/parallax backdrop subtly for editorial calm */
+.parallax-bg { opacity: .5; }
+
+/* Slow marquee for editorial rhythm */
+.marquee-container {
+  display: flex;
+  gap: 2rem;
+}
+.marquee-row {
+  color: rgba(0, 0, 0, 0.35);
+  animation: marquee-slide 60s linear infinite;
+  will-change: transform;
+  flex-shrink: 0;
+}
+@keyframes marquee-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row { animation: none !important; }
+  .fade-in-section,
+  .text-box-reveal,
+  .slide-in-left,
+  .scale-in,
+  .globe-enter,
+  .initial-load-1,
+  .initial-load-2,
+  .initial-load-3,
+  .initial-load-4,
+  .floating-card,
+  .pulse-dot,
+  .scroll-float { 
+    transition: none !important; 
+    transform: none !important; 
+    opacity: 1 !important; 
+    animation: none !important;
+  }
+  .parallax-bg { transform: none !important; }
+  .orb-slow { animation: none !important; }
+}
+
+/* Visible drifting orbs behind hero */
+.orb-slow {
+  width: 400px;
+  height: 400px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 40% 40%, rgba(0,0,0,0.25), rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.04) 70%, transparent 80%);
+  filter: blur(50px);
+  animation: orbDrift 30s ease-in-out infinite;
+  will-change: transform;
+}
+.delay-1000 { animation-delay: 1s; }
+.delay-2000 { animation-delay: 2s; }
+@keyframes orbDrift {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(50px, -30px) scale(1.1); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+/* Initial page load animations - NO FLICKER */
+.initial-load-1 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: initialFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+.initial-load-2 {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: initialFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.initial-load-3 {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: initialFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.initial-load-4 {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+@keyframes initialFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 0.7; /* For floating cards */
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Override for specific elements that need full opacity */
+.text-reveal.initial-load-4 h1 {
+  animation: heroFadeInFull 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+@keyframes heroFadeInFull {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating scroll elements */
+.scroll-float {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.floating-card {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Magnetic hover effect for buttons */
+.magnetic-button {
+  position: relative;
+  will-change: transform, box-shadow, background-color, border-color;
+  transform: translateY(0) scale(1);
+  /* Keep a tiny resting shadow so it never pops from 0 to full */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 350ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 300ms ease-out,
+    background-color 300ms ease-out;
+}
+
+.magnetic-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.06);
+  /* Ease shadow up gently instead of appearing abruptly */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08), 0 0 40px rgba(0, 0, 0, 0.10);
+}
+
+/* Optional: extra-soft shadow using a pseudo-element that fades opacity */
+.magnetic-button::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 48px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  transition: opacity 450ms ease-out;
+}
+
+.magnetic-button:hover::after {
+  opacity: 1;
+}
+
+/* Magnetic hover effect for cards */
+.magnetic-hover {
+  will-change: transform;
+}
+
+.magnetic-hover:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Enhanced pulse for dots */
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Ripple effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Gradient reveal effect */
+.gradient-reveal {
+  background: linear-gradient(90deg, 
+    rgba(0,0,0,0.9) 0%, 
+    rgba(0,0,0,0.9) var(--reveal-progress, 0%), 
+    rgba(0,0,0,0.4) var(--reveal-progress, 0%), 
+    rgba(0,0,0,0.4) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: --reveal-progress 0.3s ease-out;
+}
+
+/* Enhanced shimmer */
+@keyframes shimmerEnhanced {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Stagger animations with better timing */
+.stagger-1 { transition-delay: 0s; }
+.stagger-2 { transition-delay: 0.1s; }
+.stagger-3 { transition-delay: 0.2s; }
+.stagger-4 { transition-delay: 0.3s; }
+.stagger-5 { transition-delay: 0.4s; }
+.stagger-6 { transition-delay: 0.5s; }
+
+/* Improved magnetic card with better spring */
+.magnetic-card {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.magnetic-card:hover {
+  transform: translateY(-8px) scale(1.02);
 }
