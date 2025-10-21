@@ -24,12 +24,13 @@ export default function ScrollFollower() {
         })
 
         const baseOffset = 120
-        if (closest && ref.current) {
-          const r = closest!.el.getBoundingClientRect()
+        const target = closest?.el ?? null
+        if (target && ref.current) {
+          const r = target.getBoundingClientRect()
           const mid = r.top + r.height / 2
           const targetY = window.scrollY + mid - baseOffset
           ref.current.style.transform = `translateY(${targetY}px)`
-          const label = closest!.el.getAttribute('data-label') || 'Context'
+          const label = target.getAttribute('data-label') || 'Context'
           if (labelRef.current) labelRef.current.textContent = label
         } else if (ref.current) {
           // Reset position when no element is found
