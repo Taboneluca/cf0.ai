@@ -270,12 +270,12 @@ export default function PreLaunchPage() {
 
             <div className="fade-in-section stagger-4 text-box-reveal space-y-8 scale-in max-w-[72ch] mx-auto group" data-follow data-label="AI Research Partner">
               <p className="text-pretty text-lg md:text-xl leading-[1.7] text-black/65 transition-colors duration-300 group-hover:text-black/80">
-                With recent progress in generative AI, this experience is now tractable. The investor sets the logic and
+                With recent progress in AI, this experience is now within reach. The investor sets the logic and
                 the guardrails. An AI Research Partner unifies sources, normalizes context, tracks lineage, and
                 assembles a personal interface on demand.
               </p>
               <p className="text-pretty text-lg md:text-xl leading-[1.7] text-black/65 transition-colors duration-300 group-hover:text-black/80">
-                This Investor + AI symbiosis can power research across a firm's entire data estate while respecting
+                This Investor + AI partnership can power research across a firm's entire data estate while respecting
                 compliance and workflow needs.
               </p>
             </div>
@@ -291,7 +291,7 @@ export default function PreLaunchPage() {
             <div className="fade-in-section stagger-6 text-box-reveal space-y-10">
               <div className="space-y-6">
                 <p className="text-pretty text-xl leading-relaxed text-black/60">
-                  Today, we are heads down with design partners. We look toward a future where high-quality investment
+                  Today, we are heads down with our intelligent early adopters. We look toward a future where high-quality investment
                   research is accessible, auditable, and truly personal.
                 </p>
                 <p className="text-pretty text-2xl font-light leading-relaxed text-black/95 animate-pulse-subtle">
