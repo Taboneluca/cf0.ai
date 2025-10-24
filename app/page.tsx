@@ -69,7 +69,7 @@ export default function PreLaunchPage() {
           }
         })
       },
-      { threshold: 0.2, rootMargin: "0px 0px -250px 0px" },
+      { threshold: 0.05, rootMargin: "0px 0px -300px 0px" },
     )
 
     if (reducedMotion) {
@@ -238,10 +238,10 @@ export default function PreLaunchPage() {
         {/* Premium Network Globe Visualization */}
         <section className="mx-auto max-w-5xl px-8 pt-8 pb-20">
           <div 
-            className="fade-in-section stagger-5 globe-enter"
+            className="fade-in-section globe-enter"
             style={{ 
               opacity: 0, 
-              transform: 'scale(0.8) translateY(60px)',
+              transform: 'scale(0.9) translateY(30px)',
               transition: 'none'
             }}
           >
@@ -372,13 +372,13 @@ export default function PreLaunchPage() {
           transform: scale(1) translateY(0);
         }
 
-        /* Globe entrance animation */
+        /* Globe entrance animation - faster */
         .globe-enter {
           opacity: 0;
-          transform: scale(0.8) translateY(60px);
+          transform: scale(0.94) translateY(22px);
           transition: 
-            opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .globe-enter.animate-in {

@@ -112,8 +112,8 @@ export default function NetworkGlobe() {
               style={{
                 transform: `rotate(${ring.rotation}deg)`,
                 transformOrigin: "center",
-                animationDelay: `${0.3 + index * 0.2}s, ${0.3 + index * 0.2 + 1}s`,
-                animationDuration: `1s, ${30 + index * 10}s`
+                animationDelay: `${0.15 + index * 0.15}s, ${0.5 + index * 0.2}s`,
+                animationDuration: `0.6s, ${24 + index * 8}s`
               }}
               suppressHydrationWarning
             />
@@ -125,10 +125,10 @@ export default function NetworkGlobe() {
                   key={`ring-dot-${index}-${i}`}
                   cx={200 + Math.cos(angle) * ring.radius}
                   cy={200 + Math.sin(angle) * ring.radius}
-                  r="1.5"
+                  r="2"
                   fill="rgba(0,0,0,0.25)"
                   className={`pulse-node ${isVisible ? 'pulse-node-enter' : ''}`}
-                  style={{ animationDelay: `${0.6 + index * 0.2 + i * 0.05}s, ${0.6 + index * 0.2 + i * 0.05 + 0.4}s` }}
+                  style={{ animationDelay: `${0.4 + index * 0.15 + i * 0.04}s, ${0.7 + index * 0.15 + i * 0.04}s` }}
                   suppressHydrationWarning
                 />
               )
@@ -147,15 +147,15 @@ export default function NetworkGlobe() {
               stroke="url(#connectionGradient)"
               strokeWidth="0.5"
               className={`connection-line ${isVisible ? 'line-enter' : ''}`}
-              style={{ animationDelay: `${1 + index * 0.1}s` }}
+              style={{ animationDelay: `${0.4 + index * 0.06}s` }}
               suppressHydrationWarning
             />
             {/* Animated data flow */}
             <circle
-              r="2"
-              fill="rgba(0,0,0,0.6)"
+              r="2.2"
+              fill="rgba(0,0,0,0.8)"
               className={`data-flow ${isVisible ? 'flow-enter' : ''}`}
-              style={{ animationDelay: `${2 + index * 0.1}s` }}
+              style={{ animationDelay: `${1.0 + index * 0.06}s` }}
               suppressHydrationWarning
             >
               <animateMotion
@@ -183,18 +183,18 @@ export default function NetworkGlobe() {
               cx={node.x}
               cy={node.y}
               r="3"
-              fill="rgba(0,0,0,0.3)"
+              fill="rgba(0,0,0,0.35)"
               className={`network-node ${isVisible ? 'node-enter' : ''}`}
-              style={{ animationDelay: `${1.5 + index * 0.05}s, ${1.5 + index * 0.05 + 0.4}s` }}
+              style={{ animationDelay: `${0.7 + index * 0.035}s, ${1.0 + index * 0.035}s` }}
               suppressHydrationWarning
             />
             <circle
               cx={node.x}
               cy={node.y}
-              r="2"
+              r="2.2"
               fill="white"
               className={`network-node-inner ${isVisible ? 'node-enter' : ''}`}
-              style={{ animationDelay: `${1.5 + index * 0.05}s, ${1.5 + index * 0.05 + 0.4}s` }}
+              style={{ animationDelay: `${0.7 + index * 0.035}s, ${1.0 + index * 0.035}s` }}
               suppressHydrationWarning
             />
           </g>
@@ -206,14 +206,14 @@ export default function NetworkGlobe() {
             cx="200"
             cy="200"
             r="6"
-            fill="rgba(0,0,0,0.2)"
+            fill="rgba(0,0,0,0.35)"
             className={`central-node ${isVisible ? 'center-enter' : ''}`}
           />
           <circle
             cx="200"
             cy="200"
             r="3"
-            fill="white"
+            fill="rgba(0,0,0,0.85)"
             className={`central-node-core ${isVisible ? 'center-enter' : ''}`}
           />
         </g>
@@ -222,13 +222,13 @@ export default function NetworkGlobe() {
       {/* Overlay labels */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className={`floating-label px-3 py-1 rounded-full border border-black/10 bg-white/90 backdrop-blur-sm ${isVisible ? 'label-enter' : ''}`}>
-            <p className="font-mono text-[10px] text-black/50">Global network</p>
+          <div className={`floating-label px-3.5 py-1.5 rounded-full border border-black/10 bg-white/90 backdrop-blur-sm ${isVisible ? 'label-enter-fast' : ''}`}>
+            <p className="font-mono text-[11px] text-black/50">Global network</p>
           </div>
         </div>
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-          <div className={`floating-label px-3 py-1 rounded-full border border-black/10 bg-white/90 backdrop-blur-sm ${isVisible ? 'label-enter' : ''}`}>
-            <p className="font-mono text-[10px] text-black/50">Real-time sync</p>
+          <div className={`floating-label px-3.5 py-1.5 rounded-full border border-black/10 bg-white/90 backdrop-blur-sm ${isVisible ? 'label-enter-fast' : ''}`}>
+            <p className="font-mono text-[11px] text-black/50">Real-time sync</p>
           </div>
         </div>
       </div>
@@ -408,6 +408,14 @@ export default function NetworkGlobe() {
           animation: 
             labelFade 0.8s ease-out 2.5s forwards,
             floatLabel 4s ease-in-out infinite 3.3s;
+        }
+
+        .label-enter-fast {
+          opacity: 0;
+          transform: translateY(8px);
+          animation: 
+            labelFade 0.6s ease-out 0.9s forwards,
+            floatLabel 4s ease-in-out infinite 1.6s;
         }
 
         @keyframes labelFade {
