@@ -179,7 +179,7 @@ export default function PreLaunchPage() {
       <div className="relative" ref={contentRef}>
         {/* Header */}
         <header className="sticky top-0 z-50 border-b border-black/5 backdrop-blur-sm bg-white/80">
-          <div className="mx-auto max-w-5xl px-8 py-8">
+          <div className="mx-auto max-w-5xl px-8 py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3 parallax-element">
                 <Image 
@@ -202,7 +202,7 @@ export default function PreLaunchPage() {
         </header>
 
         {/* Hero Section */}
-        <section className="mx-auto max-w-5xl px-8 pt-28 pb-8">
+        <section className="mx-auto max-w-5xl px-8 pt-16 pb-8">
           <div className="initial-load-1 space-y-6 text-center">
             <div className="inline-block rounded-full border border-black/10 bg-black/[0.02] px-5 py-2 backdrop-blur-sm parallax-element animate-badge-float mx-auto">
               <span className="font-mono text-sm tracking-wide text-black/70">Introducing cf0</span>
@@ -212,13 +212,13 @@ export default function PreLaunchPage() {
             </p>
           </div>
           {/* Optional slow marquee for rhythm */}
-          <div className="mt-6 initial-load-3">
+          <div className="mt-4 initial-load-3">
             <Marquee />
           </div>
         </section>
 
         {/* Main Headline */}
-        <section className="relative mx-auto max-w-5xl px-8 py-16 min-h-[50vh] flex items-center justify-center">
+        <section className="relative mx-auto max-w-5xl px-8 py-12 min-h-[50vh] flex items-center justify-center">
           <HeroLines />
           
           {/* Gradient background behind headline */}
