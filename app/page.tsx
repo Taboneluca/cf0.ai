@@ -299,14 +299,7 @@ export default function PreLaunchPage() {
                 </p>
               </div>
 
-              <div className="pt-4 relative">
-                {/* Floating element near CTA - non-blocking */}
-                <div className="scroll-float absolute -right-20 top-0 z-[2] opacity-60 hidden xl:block pointer-events-none">
-                  <div className="floating-card px-3 py-2 rounded-lg border border-black/10 bg-white/90 backdrop-blur-sm shadow-sm">
-                    <p className="font-mono text-[10px] text-black/50">Let's connect</p>
-                  </div>
-                </div>
-                
+              <div className="pt-4">
                 <a
                   href="mailto:hello@cf0.ai"
                   className="magnetic-button group relative inline-flex items-center gap-3 rounded-xl border border-black/20 bg-black/[0.03] px-8 py-4 font-mono text-sm tracking-wide overflow-hidden"
