@@ -183,13 +183,12 @@ export default function PreLaunchPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3 parallax-element">
                 <Image 
-                  src="/inverted_logo.jpg" 
+                  src="/cf0_logo_with_text.jpeg" 
                   alt="cf0 logo" 
-                  width={28} 
-                  height={28} 
+                  width={180} 
+                  height={180} 
                   className="rounded-md"
                 />
-                <span className="font-mono text-xl font-medium tracking-tight">cf0</span>
               </div>
               <a
                 href="mailto:hello@cf0.ai"
