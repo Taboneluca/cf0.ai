@@ -183,10 +183,10 @@ export default function PreLaunchPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3 parallax-element">
                 <Image 
-                  src="/cf0_logo_with_text.jpeg" 
+                  src="/cf0_text_logo.svg" 
                   alt="cf0 logo" 
-                  width={180} 
-                  height={180} 
+                  width={120} 
+                  height={56} 
                   className="rounded-md"
                 />
               </div>
@@ -201,7 +201,7 @@ export default function PreLaunchPage() {
         </header>
 
         {/* Hero Section */}
-        <section className="mx-auto max-w-5xl px-8 pt-16 pb-8">
+        <section className="mx-auto max-w-5xl px-8 pt-8 pb-4">
           <div className="initial-load-1 space-y-6 text-center">
             <div className="inline-block rounded-full border border-black/10 bg-black/[0.02] px-5 py-2 backdrop-blur-sm parallax-element animate-badge-float mx-auto">
               <span className="font-mono text-sm tracking-wide text-black/70">Introducing cf0</span>
@@ -217,7 +217,7 @@ export default function PreLaunchPage() {
         </section>
 
         {/* Main Headline */}
-        <section className="relative mx-auto max-w-5xl px-8 py-12 min-h-[50vh] flex items-center justify-center">
+        <section className="relative mx-auto max-w-5xl px-8 py-6 min-h-[50vh] flex items-center justify-center">
           <HeroLines />
           
           {/* Gradient background behind headline */}
