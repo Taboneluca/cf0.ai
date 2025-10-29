@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   title: "cf0 - AI-Native Research for Investors",
   description: "Building an AI-native research environment that gives investors agency through clarity.",
   generator: "v0.app",
+  icons: { // Add this block for favicon
+    icon: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({
