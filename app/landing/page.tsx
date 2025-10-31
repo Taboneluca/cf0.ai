@@ -39,8 +39,8 @@ export default function LandingPage() {
             />
           </h1>
           <p className="text-muted-foreground max-w-prose">
-            Build, query, and edit institutional‑grade stock analysis. Multi‑agent drafting, RAG search, and
-            background monitoring—designed for faster conviction.
+            Build, query and edit institutional-grade stock analysis with speed and clarity. Powered by multi-agent
+            workflows, RAG and real-time market data.
           </p>
           <div className="flex items-center gap-3">
             <Link href="/login">
@@ -97,12 +97,12 @@ export default function LandingPage() {
           <BentoGrid className="md:auto-rows-[20rem]">
             {/* Build Mode (spotlight) */}
             <div className="md:col-span-3">
-              <CardSpotlight className="bg-white border border-black/10 text-black">
+              <CardSpotlight className="bg-white border border-black/10 text-black overflow-hidden" blend="normal" tint="cyan" radius={260}>
                 <div className="relative z-10 space-y-3">
                   <h3 className="text-xl font-serif">Build Mode</h3>
                   <p className="text-muted-foreground max-w-prose">
-                    Ask, refine, and turn answers into charts instantly. Structure content with one prompt and keep
-                    provenance for every number. When it feels right, save the flow as a reusable template.
+                    Prompt the UI to add, change, or restructure. Generate investment‑standard visuals on demand and
+                    keep provenance attached. Save the final flow as a reusable template.
                   </p>
                 </div>
               </CardSpotlight>
@@ -114,8 +114,8 @@ export default function LandingPage() {
                 <div className="space-y-2">
                   <h3 className="text-lg font-serif">Adaptive UI</h3>
                   <p className="text-muted-foreground max-w-prose">
-                    The interface reshapes to your questions and workflow—reducing clicks and surfacing the next best
-                    action automatically.
+                    The interface reshapes to your questions with context‑aware panels and chart presets—fewer clicks,
+                    faster conviction.
                   </p>
                 </div>
               </WobbleCard>
@@ -127,8 +127,7 @@ export default function LandingPage() {
                 <div className="space-y-2">
                   <h3 className="text-lg font-serif">Background Agents</h3>
                   <p className="text-muted-foreground">
-                    Reports stay fresh. Agents watch news, filings, and prices—suggesting precise edits you can apply
-                    in one click.
+                    Background agents listen for news, filings, and prices. Suggested edits land in your queue.
                   </p>
                 </div>
               </WobbleCard>
@@ -140,7 +139,7 @@ export default function LandingPage() {
               title="Brokerage Integration"
               description={
                 <span>
-                  One login, unified oversight across custodians—SSO, permissions, and audit trails included.
+                  One login, unified oversight across custodians for faster, simpler client management.
                 </span>
               }
             />
@@ -151,7 +150,7 @@ export default function LandingPage() {
               title="Template Saving"
               description={
                 <span>
-                  Save your Build Mode sessions as templates. Start new analyses with a proven structure and guardrails.
+                  Save your Build Mode sessions as reusable workflows. Start new analyses with a proven structure.
                 </span>
               }
             />
@@ -159,23 +158,27 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Onboard & Connect (focused) */}
-      <section className="mx-auto max-w-6xl px-4 pb-28">
-        <div className="mb-6 flex items-center justify-between">
+      {/* Onboard & Connect */}
+      <section className="mx-auto max-w-6xl px-4 pb-24">
+        <div className="flex items-center justify-between">
           <h2 className="text-2xl font-serif tracking-tight">Onboard & Connect</h2>
         </div>
-        <OnboardingConnect />
+        <div className="mt-6">
+          <OnboardingConnect />
+        </div>
       </section>
 
-      {/* Agent Architecture */}
-      <section className="mx-auto max-w-6xl px-4 pb-28">
-        <div className="mb-6 flex items-center justify-between">
+      {/* Agent architecture */}
+      <section className="mx-auto max-w-6xl px-4 pb-24">
+        <div className="flex items-center justify-between">
           <h2 className="text-2xl font-serif tracking-tight">Agent Architecture</h2>
         </div>
-        <AgentBubbles />
+        <div className="mt-6">
+          <AgentBubbles />
+        </div>
       </section>
 
-      {/* Capabilities grid (charts) */}
+      {/* Capabilities (charts) */}
       <Capabilities />
 
       {/* How it works */}

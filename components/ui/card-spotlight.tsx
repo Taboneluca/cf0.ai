@@ -9,11 +9,15 @@ export const CardSpotlight = ({
   children,
   radius = 350,
   color = "#262626",
+  blend = "screen",
+  tint = "cyan",
   className,
   ...props
 }: {
   radius?: number;
   color?: string;
+  blend?: "screen" | "normal";
+  tint?: "cyan" | "amber" | "none";
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>) => {
   const mouseX = useMotionValue(0);
@@ -46,12 +50,12 @@ export const CardSpotlight = ({
       <motion.div
         className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
         style={{
-          backgroundColor: color,
-          maskImage: useMotionTemplate`
+          mixBlendMode: blend === "screen" ? ("screen" as any) : ("normal" as any),
+          background: useMotionTemplate`
             radial-gradient(
               ${radius}px circle at ${mouseX}px ${mouseY}px,
-              white,
-              transparent 80%
+              ${tint === "cyan" ? "rgba(56,189,248,0.45)" : tint === "amber" ? "rgba(251,191,36,0.4)" : "rgba(255,255,255,0.25)"},
+              transparent 70%
             )
           `,
         }}
@@ -61,8 +65,8 @@ export const CardSpotlight = ({
             animationSpeed={5}
             containerClassName="bg-transparent absolute inset-0 pointer-events-none"
             colors={[
-              [59, 130, 246],
-              [139, 92, 246],
+              [56, 189, 248],
+              [37, 99, 235],
             ]}
             dotSize={3}
           />

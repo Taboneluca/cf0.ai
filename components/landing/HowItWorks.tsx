@@ -29,7 +29,7 @@ function OnboardScene() {
       <HoleBackground className="absolute inset-0 rounded-md" />
       <div className="relative z-10 h-full w-full p-4 flex flex-col items-start justify-end gap-3">
         <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[10px] font-mono text-black/70">
-          Connected data sources
+          SSO • Permissions • Data sources
         </div>
         <div className="grid grid-cols-2 gap-2 w-full">
           {LOGOS.map((label) => (
@@ -220,7 +220,7 @@ export function HowItWorks() {
         <div className="space-y-3">
           <h3 className="text-xl font-serif">Onboard & Connect</h3>
           <p className="text-sm text-black/70 max-w-prose">
-            Connect SSO, set roles and permissions, then toggle the data sources you already trust—all during sign up.
+            Connect permissions and data sources during sign up. We handle SSO and access.
           </p>
         </div>
         <div className="relative h-80">

@@ -47,7 +47,7 @@ export function AuthPage() {
             deleteSpeed={35}
             pauseDelay={1400}
             loop
-            className="text-xl max-w-sm text-foreground/90"
+            className="text-lg max-w-[16rem] text-foreground/90"
           />
         </div>
         <div className="absolute inset-0">
@@ -70,7 +70,7 @@ export function AuthPage() {
             Home
           </a>
         </Button>
-        <div className="mx-auto space-y-4 sm:w-sm">
+        <div className="mx-auto space-y-1 sm:w-sm">
           <Image
             src="/cf0_text_logo.svg"
             alt="cf0 logo"
@@ -78,7 +78,7 @@ export function AuthPage() {
             height={56}
             className="lg:hidden rounded-md"
           />
-          <div className="flex flex-col space-y-1">
+          <div className="flex flex-col space-y-0">
             <h1 className="font-mono text-3xl md:text-4xl tracking-wide">
               Sign in to cf0
             </h1>
@@ -86,10 +86,7 @@ export function AuthPage() {
               Enter your credentials to continue.
             </p>
           </div>
-          <form className="space-y-2">
-            <p className="text-start text-muted-foreground text-xs">
-              Enter your email and password to sign in
-            </p>
+          <form className="space-y-1">
             <InputGroup>
               <InputGroupInput
                 placeholder="your.email@example.com"

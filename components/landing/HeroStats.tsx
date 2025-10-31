@@ -3,13 +3,8 @@
 import React from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from "@/components/ui/chart"
-import { CartesianGrid, Line, LineChart } from "recharts"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart"
+import { LineChart, CartesianGrid, Line, XAxis } from "recharts"
 
 type Stat = {
   label: string
@@ -17,62 +12,59 @@ type Stat = {
   hint?: string
 }
 
-const stats: Stat[] = [
-  { label: "Data coverage", value: "29+ endpoints", hint: "FMP, Finnhub, Benzinga, SEC" },
-  { label: "Freshness", value: "Realtime", hint: "Background agents keep reports current" },
-  { label: "Latency", value: "~2–3s", hint: "Fast mode answers via RAG" },
+const trendData = [
+  { m: "Jan", v: 12 },
+  { m: "Feb", v: 18 },
+  { m: "Mar", v: 16 },
+  { m: "Apr", v: 22 },
+  { m: "May", v: 27 },
+  { m: "Jun", v: 31 },
 ]
 
-const sparkData = [
-  { x: 0, y: 14 },
-  { x: 1, y: 18 },
-  { x: 2, y: 12 },
-  { x: 3, y: 22 },
-  { x: 4, y: 19 },
-  { x: 5, y: 25 },
-]
+const chartConfig: ChartConfig = {
+  v: { label: "Score", color: "var(--chart-1)" },
+}
 
-const sparkConfig = {
-  y: { label: "Trend", color: "var(--chart-1)" },
-} satisfies ChartConfig
+const STATS: Stat[] = [
+  { label: "Avg. report time", value: "2m 45s", hint: "from inputs to draft" },
+  { label: "RAG recall", value: "96%", hint: "section‑aware prompts" },
+  { label: "Charts per report", value: "10+", hint: "Vega/Recharts mix" },
+]
 
 export default function HeroStats() {
   return (
-    <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-      {stats.map((s, i) => (
-        <Card
-          key={s.label}
-          className="group relative overflow-hidden border-black/10 bg-white/70 p-3 backdrop-blur supports-[backdrop-filter]:bg-white/60"
-        >
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <div className="text-[11px] text-black/50">{s.label}</div>
-              <div className="mt-1 text-sm font-medium text-black/80">{s.value}</div>
-            </div>
-            <div className="hidden sm:block w-24">
-              <ChartContainer config={sparkConfig} className="aspect-[9/3]">
-                <LineChart
-                  data={sparkData.map((d) => ({ ...d, x: d.x + i }))}
-                  margin={{ left: 0, right: 0, top: 8, bottom: 0 }}
-                >
-                  <CartesianGrid vertical={false} horizontal={false} />
-                  <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                  <Line dataKey="y" stroke="var(--color-y)" strokeWidth={2} dot={false} type="monotone" />
-                </LineChart>
-              </ChartContainer>
-            </div>
+    <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {/* Compact sparkline card */}
+      <Card className="relative overflow-hidden border-black/10 bg-white p-3">
+        <div className="flex items-center justify-between">
+          <div className="space-y-0.5">
+            <div className="text-xs text-black/60">Confidence trend</div>
+            <div className="text-sm font-medium text-black">Validator score</div>
           </div>
-          {s.hint ? (
-            <div className="mt-2 flex flex-wrap items-center gap-1">
-              {s.hint.split(", ").map((token) => (
-                <Badge key={token} variant="secondary" className="h-5 rounded-full px-2 text-[10px]">
-                  {token}
-                </Badge>
-              ))}
-            </div>
-          ) : null}
-        </Card>
-      ))}
+          <Badge variant="secondary" className="rounded-full">+4.2%</Badge>
+        </div>
+        <div className="mt-2">
+          <ChartContainer config={chartConfig} className="h-20 w-full">
+            <LineChart accessibilityLayer data={trendData} margin={{ left: 6, right: 6, top: 6, bottom: 0 }}>
+              <CartesianGrid vertical={false} strokeDasharray="3 3" />
+              <XAxis dataKey="m" tickLine={false} axisLine={false} tickMargin={4} />
+              <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+              <Line dataKey="v" type="monotone" stroke="var(--color-v)" strokeWidth={2} dot={false} />
+            </LineChart>
+          </ChartContainer>
+        </div>
+      </Card>
+
+      {/* KPI badges */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {STATS.map((s) => (
+          <div key={s.label} className="rounded-lg border border-black/10 bg-white p-3">
+            <div className="text-[11px] text-black/50">{s.label}</div>
+            <div className="mt-1 text-base font-medium text-black">{s.value}</div>
+            {s.hint && <div className="text-[10px] text-black/50">{s.hint}</div>}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
