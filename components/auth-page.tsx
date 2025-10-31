@@ -13,6 +13,7 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { FloatingPaths } from "./floating-paths";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 
 export function AuthPage() {
   const [email, setEmail] = useState("");
@@ -33,15 +34,21 @@ export function AuthPage() {
         />
 
         <div className="z-10 mt-auto">
-          <blockquote className="space-y-2">
-            <p className="text-xl">
-              &ldquo;This Platform has helped me to save time and serve my
-              clients faster than ever before.&rdquo;
-            </p>
-            <footer className="font-mono font-semibold text-sm">
-              ~ Ali Hassan
-            </footer>
-          </blockquote>
+          <TypingAnimation
+            as="p"
+            words={[
+              "Transforms filings, data, and notes into a single research view.",
+              "Tracks provenance so you can trust every fact.",
+              "Generates the next view you need based on your thesis.",
+              "Monitors in real time and alerts with context that matters.",
+              "Built for investors who want less noise and faster conviction.",
+            ]}
+            typeSpeed={50}
+            deleteSpeed={35}
+            pauseDelay={1400}
+            loop
+            className="text-xl max-w-sm text-foreground/90"
+          />
         </div>
         <div className="absolute inset-0">
           <FloatingPaths position={1} />
