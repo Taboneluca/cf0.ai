@@ -107,8 +107,8 @@ export function AuthPage() {
               />
             </InputGroup>
 
-            <Button
-              className="w-full"
+            <button
+              className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 w-full"
               type="button"
               disabled={!email || !password}
               onClick={async () => {
@@ -116,8 +116,11 @@ export function AuthPage() {
                 router.push("/");
               }}
             >
-              Sign in
-            </Button>
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FF00E0_0%,#00E0FF_50%,#FF00E0_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                Sign in
+              </span>
+            </button>
           </form>
           {/* Optional links can be added here if needed */}
         </div>
