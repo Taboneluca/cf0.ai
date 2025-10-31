@@ -79,7 +79,7 @@ export function AuthPage() {
             className="lg:hidden rounded-md"
           />
           <div className="flex flex-col space-y-0">
-            <h1 className="font-mono text-3xl md:text-4xl tracking-wide">
+            <h1 className="font-mono text-3xl md:text-4xl tracking-tighter text-balance">
               Sign in to cf0
             </h1>
             <p className="text-base text-muted-foreground">
