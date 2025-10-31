@@ -18,5 +18,12 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {}
+  "registries": {
+    "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
+    "@efferd": "https://efferd.com/r/{name}.json",
+    "@animate-ui": "https://animate-ui.com/r/{name}.json",
+    "@blocks": "https://blocks.so/r/{name}.json",
+    "@diceui": "https://diceui.com/r/{name}.json",
+    "@magicui": "https://magicui.design/r/{name}"
+  }
 }

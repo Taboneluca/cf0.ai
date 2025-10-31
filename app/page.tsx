@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import HeroLines from "../components/HeroLines"
 import { Marquee } from "../components/Marquee"
 import NetworkGlobe from "../components/NetworkGlobe"
@@ -190,12 +191,22 @@ export default function PreLaunchPage() {
                   className="rounded-md"
                 />
               </div>
-              <a
-                href="mailto:hello@cf0.ai"
-                className="font-mono text-sm text-black/50 transition-colors hover:text-black/90 parallax-element"
-              >
-                hello@cf0.ai
-              </a>
+              <div className="flex items-center gap-4 parallax-element">
+                <a
+                  href="mailto:hello@cf0.ai"
+                  className="font-mono text-sm text-black/50 transition-colors hover:text-black/90"
+                >
+                  hello@cf0.ai
+                </a>
+                <Link
+                  href="/login"
+                  className="group relative overflow-hidden rounded-full border border-black/20 bg-black/[0.03] px-3 py-1.5 font-mono text-sm font-medium tracking-wide text-black/70 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:text-black"
+                >
+                  <span className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-black/5 to-transparent" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-black/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out" />
+                  <span className="relative z-10">Access</span>
+                </Link>
+              </div>
             </div>
           </div>
         </header>
